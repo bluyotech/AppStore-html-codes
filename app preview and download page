@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Download Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .app-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            gap: 20px;
+        }
+        .app-header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 20%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .app-header .app-info {
+            flex: 1;
+        }
+        .app-header .app-info h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #222;
+        }
+        .app-header .app-info p {
+            margin: 5px 0 10px;
+            color: #555;
+        }
+        .app-header .app-info .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1E90FF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .app-header .app-info .download-btn:hover {
+            background-color: #2e8b4f;
+        }
+        .description {
+            padding: 20px;
+            line-height: 1.6;
+            color: #444;
+        }
+        .screenshots {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 20px;
+        }
+        .screenshots img {
+            width: 200px;
+            height: 350px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="app-header">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhnF8GNEE9tfg-4e9fyPodj5VDVvU08nfxgTPm0kOxe_pxxp2RMrWHmw44xafH2cFgMWlEPJcZlQKxo80thoC1-TLr6Sovzgt91ej1VBbpPCSEAzZs7E7OYXvA1LUW_Q1KDkLme-aasAx-_1Cz0n3xKN9HX_279jOsfu_q-kb-eFVBKlFkBNFz_C9v6qlM/s1024/DALL%C2%B7E%202024-11-23%2017.07.46%20-%20A%20modern%20and%20sleek%20square%20app%20icon%20featuring%20a%20bold,%20stylized%20blue%20letter%20%27A%27%20in%20the%20center.%20The%20background%20is%20a%20gradient%20from%20dark%20blue%20to%20light%20blue.webp" alt="App Icon">
+            <div class="app-info">
+                <h1>Awesome App</h1>
+                <p>Developer Name | Rated 4.5 ★</p>
+                <a href="#" class="download-btn">Install</a>
+            </div>
+        </div>
+        <div class="description">
+            <h2>About this app</h2>
+            <p>
+                Awesome App is the ultimate solution for [describe the purpose of the app]. 
+                With its user-friendly design and advanced features, it allows users to [mention key app features]. 
+            </p>
+            <ul>
+                <li>Feature 1: Description</li>
+                <li>Feature 2: Description</li>
+                <li>Feature 3: Description</li>
+            </ul>
+        </div>
+        <div class="screenshots">
+            <img src="https://via.placeholder.com/200x350" alt="Screenshot 1">
+            <img src="https://via.placeholder.com/200x350" alt="Screenshot 2">
+            <img src="https://via.placeholder.com/200x350" alt="Screenshot 3">
+            <img src="https://via.placeholder.com/200x350" alt="Screenshot 4">
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhnF8GNEE9tfg-4e9fyPodj5VDVvU08nfxgTPm0kOxe_pxxp2RMrWHmw44xafH2cFgMWlEPJcZlQKxo80thoC1-TLr6Sovzgt91ej1VBbpPCSEAzZs7E7OYXvA1LUW_Q1KDkLme-aasAx-_1Cz0n3xKN9HX_279jOsfu_q-kb-eFVBKlFkBNFz_C9v6qlM/s1024/DALL%C2%B7E%202024-11-23%2017.07.46%20-%20A%20modern%20and%20sleek%20square%20app%20icon%20featuring%20a%20bold,%20stylized%20blue%20letter%20%27A%27%20in%20the%20center.%20The%20background%20is%20a%20gradient%20from%20dark%20blue%20to%20light%20blue.webp" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"><img alt="" border="0" width="200" data-original-height="1024" data-original-width="1024" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhnF8GNEE9tfg-4e9fyPodj5VDVvU08nfxgTPm0kOxe_pxxp2RMrWHmw44xafH2cFgMWlEPJcZlQKxo80thoC1-TLr6Sovzgt91ej1VBbpPCSEAzZs7E7OYXvA1LUW_Q1KDkLme-aasAx-_1Cz0n3xKN9HX_279jOsfu_q-kb-eFVBKlFkBNFz_C9v6qlM/s200/DALL%C2%B7E%202024-11-23%2017.07.46%20-%20A%20modern%20and%20sleek%20square%20app%20icon%20featuring%20a%20bold,%20stylized%20blue%20letter%20%27A%27%20in%20the%20center.%20The%20background%20is%20a%20gradient%20from%20dark%20blue%20to%20light%20blue.webp"/></a></div>
+      </div>
+    </div>
+</body>
+</html>
