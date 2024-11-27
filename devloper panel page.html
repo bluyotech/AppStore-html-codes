@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppNest Dev Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Header */
+        header {
+            background-color: #0078d7;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            display: block;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #f5f5f5;
+            color: #0078d7;
+            border-left: 5px solid #0078d7;
+            padding-left: 15px;
+        }
+
+        /* Content */
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .content h2 {
+            font-size: 1.8rem;
+            color: #0078d7;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            font-size: 1rem;
+            color: white;
+            background-color: #0078d7;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #005cbf;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>AppNest Dev Panel</h1>
+        <p>Manage your apps with ease</p>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">View Apps</a></li>
+            <li><a href="#">Add New App</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Account Settings</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h2>Welcome to AppNest Dev</h2>
+        <!-- Section: Recent App Submissions -->
+        <div class="card">
+            <h3>Recent App Submissions</h3>
+            <p>No new submissions yet.</p>
+            <a href="#" class="btn">View Submissions</a>
+        </div>
+
+        <!-- Section: Add New App -->
+        <div class="card">
+            <h3>Add a New App</h3>
+            <p>Submit your app to the AppNest Store for users to download.</p>
+            <a href="#" class="btn">Add App</a>
+        </div>
+
+        <!-- Section: App Analytics -->
+        <div class="card">
+            <h3>Analytics</h3>
+            <p>Track downloads, ratings, and reviews for your apps.</p>
+            <a href="#" class="btn">View Analytics</a>
+        </div>
+    </div>
+</body>
+</html>
