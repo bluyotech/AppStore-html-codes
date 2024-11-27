@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppNest - Your App Store</title>
+    <style>
+        /* Basic CSS for Modern Design */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #0078d7;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 5px solid #005cbf;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #0078d7;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        a.app-card {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .app-card:hover {
+            transform: scale(1.05);
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 10px;
+            border-radius: 20%;
+            overflow: hidden;
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .app-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .app-theme {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 8px;
+        }
+
+        .app-description {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #0078d7;
+            color: white;
+            margin-top: 40px;
+            border-top: 5px solid #005cbf;
+        }
+
+        footer a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to AppNest</h1>
+    <p>Discover the best apps for your needs!</p>
+</header>
+
+<div class="container">
+    <!-- Featured Apps -->
+    <div class="section">
+        <h2>Featured Apps</h2>
+        <div class="apps-grid">
+            <a href="https://example.com/taskpro" class="app-card">
+                <div class="app-icon">
+                    <img src="https://e7.pngegg.com/pngimages/785/542/png-clipart-task-management-action-item-computer-icons-to-do-miscellaneous-blue-thumbnail.png" alt="TaskPro Icon">
+                </div>
+                <div class="app-title">TaskPro</div>
+                <div class="app-theme">Productivity</div>
+                <div class="app-description">A task manager to streamline your day.</div>
+            </a>
+            <a href="https://example.com/gamesphere" class="app-card">
+                <div class="app-icon">
+                    <img src="https://w1.pngwing.com/pngs/608/471/png-transparent-games-icon-video-games-game-controllers-symbol-racing-video-game-icon-design-mobile-game-yellow-thumbnail.png" alt="GameSphere Icon">
+                </div>
+                <div class="app-title">GameSphere</div>
+                <div class="app-theme">Gaming</div>
+                <div class="app-description">Explore and play top-rated games.</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Trending Apps -->
+    <div class="section">
+        <h2>Trending Apps</h2>
+        <div class="apps-grid">
+            <a href="https://example.com/foodiego" class="app-card">
+                <div class="app-icon">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStOB26e6FqhS8YWtkvN0L3cbFpupGF5VN8XA&s" alt="FoodieGo Icon">
+                </div>
+                <div class="app-title">FoodieGo</div>
+                <div class="app-theme">Food & Drink</div>
+                <div class="app-description">Find and order your favorite meals.</div>
+            </a>
+            <a href="https://example.com/traveltales" class="app-card">
+                <div class="app-icon">
+                    <img src="https://images.freeimages.com/vhq/images/istock/previews/7946/79466799-travel-icon.jpg" alt="TravelTales Icon">
+                </div>
+                <div class="app-title">TravelTales</div>
+                <div class="app-theme">Travel</div>
+                <div class="app-description">Plan and document your journeys.</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Newest Arrivals -->
+    <div class="section">
+        <h2>Newest Arrivals</h2>
+        <div class="apps-grid">
+            <a href="https://example.com/sleepsync" class="app-card">
+                <div class="app-icon">
+                    <img src="https://cdn-icons-png.freepik.com/512/2829/2829069.png" alt="SleepSync Icon">
+                </div>
+                <div class="app-title">SleepSync</div>
+                <div class="app-theme">Wellness</div>
+                <div class="app-description">Improve your sleep with science-backed tools.</div>
+            </a>
+            <a href="https://example.com/cryptocrate" class="app-card">
+                <div class="app-icon">
+                    <img src="https://images.vexels.com/content/144837/preview/crypto-icon-d97496.png" alt="CryptoCrate Icon">
+                </div>
+                <div class="app-title">CryptoCrate</div>
+                <div class="app-theme">Finance</div>
+                <div class="app-description">Simplified crypto investments for beginners.</div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 AppNest | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+</footer>
+
+</body>
+</html>
