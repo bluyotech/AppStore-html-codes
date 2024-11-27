@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #005cbf;
+        }
+
+        .toggle-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .toggle-link a {
+            color: #0078d7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .toggle-link a:hover {
+            text-decoration: underline;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Animation */
+        .form {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .form.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2 id="form-title">Login</h2>
+        <!-- Login and Sign-Up Forms -->
+        <form id="login-form" class="form active">
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+
+        <form id="signup-form" class="form hidden">
+            <div class="form-group">
+                <label for="signup-name">Full Name</label>
+                <input type="text" id="signup-name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" placeholder="Create a password" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-confirm-password">Confirm Password</label>
+                <input type="password" id="signup-confirm-password" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <!-- Toggle Link -->
+        <div class="toggle-link">
+            <span id="toggle-text">Don't have an account?</span>
+            <a href="#" id="toggle-link">Sign Up</a>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const toggleLink = document.getElementById('toggle-link');
+        const formTitle = document.getElementById('form-title');
+        const toggleText = document.getElementById('toggle-text');
+
+        toggleLink.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            if (loginForm.classList.contains('active')) {
+                // Fade out login form
+                loginForm.classList.remove('active');
+                setTimeout(() => {
+                    loginForm.classList.add('hidden');
+                    signupForm.classList.remove('hidden');
+                    signupForm.classList.add('active');
+                    formTitle.textContent = 'Sign Up';
+                    toggleText.textContent = 'Already have an account?';
+                    toggleLink.textContent = 'Login';
+                }, 500); // Match the transition duration
+            } else {
+                // Fade out sign-up form
+                signupForm.classList.remove('active');
+                setTimeout(() => {
+                    signupForm.classList.add('hidden');
+                    loginForm.classList.remove('hidden');
+                    loginForm.classList.add('active');
+                    formTitle.textContent = 'Login';
+                    toggleText.textContent = "Don't have an account?";
+                    toggleLink.textContent = 'Sign Up';
+                }, 500); // Match the transition duration
+            }
+        });
+    </script>
+</body>
+</html>
