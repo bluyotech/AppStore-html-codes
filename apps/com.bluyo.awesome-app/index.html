@@ -1,110 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Download Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awesome App · AppNest</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    :root {
+      --accent: #1a73e8;
+      --bg: #f5f7fb;
+      --surface: #fff;
+      --surface2: #f2f4f7;
+      --text: #111827;
+      --sub: #667085;
+      --border: #e7e7ea;
+      --radius: 24px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1115;
+        --surface: #171b22;
+        --surface2: #21262f;
+        --text: #fff;
+        --sub: #9ca3af;
+        --border: #2d3440;
+      }
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      padding-bottom: 80px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 28px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    @media (prefers-color-scheme: dark) {
+      header {
+        background: rgba(20, 22, 28, 0.7);
+      }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .logoBox {
+      width: 46px;
+      height: 46px;
+      background: linear-gradient(135deg, #49a2ff, #1a73e8);
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: white;
+    }
+    .logoBox i {
+      font-size: 24px;
+    }
+
+    .search {
+      flex: 1;
+      max-width: 700px;
+      margin: 0 40px;
+      position: relative;
+    }
+    .search input {
+      width: 100%;
+      padding: 16px 22px 16px 52px;
+      border: none;
+      outline: none;
+      background: var(--surface2);
+      border-radius: 999px;
+      font-size: 15px;
+      color: var(--text);
+    }
+    .search i {
+      position: absolute;
+      left: 18px;
+      top: 16px;
+      color: var(--sub);
+      font-size: 18px;
+    }
+
+    .avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #1a73e8;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: white;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    aside {
+      width: 250px;
+      padding: 25px;
+    }
+    .navButton {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      border-radius: 18px;
+      cursor: default;
+      margin-bottom: 10px;
+      transition: .2s;
+    }
+    .navButton:hover {
+      background: var(--surface);
+    }
+    .navButton i {
+      width: 22px;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    main {
+      flex: 1;
+      padding: 30px;
+    }
+
+    /* back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .back-link i {
+      font-size: 18px;
+    }
+
+    /* app detail card */
+    .detail-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      padding: 40px;
+      max-width: 820px;
+      margin: 0 auto;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+    }
+    .detail-top {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .detail-icon {
+      width: 110px;
+      height: 110px;
+      border-radius: 30px;
+      background: #d2e3ff;
+      display: grid;
+      place-items: center;
+      color: #1a73e8;
+      flex-shrink: 0;
+    }
+    .detail-icon i {
+      font-size: 56px;
+    }
+    .detail-title {
+      flex: 1;
+    }
+    .detail-title h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .detail-title .developer {
+      color: var(--sub);
+      font-size: 18px;
+      margin-top: 6px;
+    }
+    .detail-rating {
+      margin: 10px 0 6px;
+      font-size: 20px;
+      color: #ffb300;
+      letter-spacing: 2px;
+    }
+    .detail-meta {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin: 18px 0 24px;
+      color: var(--sub);
+      font-size: 15px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+    .detail-meta span i {
+      margin-right: 8px;
+      color: var(--accent);
+    }
+    .detail-description {
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--text);
+      margin: 18px 0 28px;
+      max-width: 600px;
+    }
+    .install-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .btn-install {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 16px 48px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      transition: .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-install i {
+      font-size: 20px;
+    }
+    .btn-install:hover {
+      transform: scale(1.02);
+      background: #0d47a1;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      padding: 16px 32px;
+      border-radius: 999px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      transition: .2s;
+      font-size: 16px;
+    }
+    .btn-outline:hover {
+      background: var(--surface2);
+    }
+
+    /* screenshots placeholder */
+    .screenshots {
+      margin-top: 36px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .screenshot {
+      width: 140px;
+      height: 260px;
+      background: var(--surface2);
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: var(--sub);
+      font-size: 13px;
+      text-align: center;
+    }
+    .screenshot i {
+      font-size: 32px;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+
+    .bottomNav {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      aside { display: none; }
+      .search { display: none; }
+      header { padding: 18px; }
+      main { padding: 18px; }
+      .detail-card { padding: 28px; }
+      .detail-top { flex-direction: column; align-items: flex-start; }
+      .detail-title h1 { font-size: 30px; }
+      .install-row { flex-direction: column; align-items: stretch; }
+      .btn-install { justify-content: center; }
+      .btn-outline { text-align: center; }
+      .bottomNav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 14px;
+        justify-content: space-around;
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(20px);
+        border-top: 1px solid var(--border);
+        z-index: 99;
+      }
+      @media (prefers-color-scheme: dark) {
+        .bottomNav {
+          background: rgba(20, 22, 28, 0.82);
         }
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-        .app-header {
-            display: flex;
-            align-items: center;
-            padding: 20px;
-            gap: 20px;
-        }
-        .app-header img {
-            width: 100px;
-            height: 100px;
-            border-radius: 20%;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .app-header .app-info {
-            flex: 1;
-        }
-        .app-header .app-info h1 {
-            margin: 0;
-            font-size: 24px;
-            color: #222;
-        }
-        .app-header .app-info p {
-            margin: 5px 0 10px;
-            color: #555;
-        }
-        .app-header .app-info .download-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #1E90FF;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        .app-header .app-info .download-btn:hover {
-            background-color: #2e8b4f;
-        }
-        .description {
-            padding: 20px;
-            line-height: 1.6;
-            color: #444;
-        }
-        .screenshots {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding: 20px;
-        }
-        .screenshots img {
-            width: 200px;
-            height: 350px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+      }
+      body { padding-bottom: 80px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="app-header">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhnF8GNEE9tfg-4e9fyPodj5VDVvU08nfxgTPm0kOxe_pxxp2RMrWHmw44xafH2cFgMWlEPJcZlQKxo80thoC1-TLr6Sovzgt91ej1VBbpPCSEAzZs7E7OYXvA1LUW_Q1KDkLme-aasAx-_1Cz0n3xKN9HX_279jOsfu_q-kb-eFVBKlFkBNFz_C9v6qlM/s1024/DALL%C2%B7E%202024-11-23%2017.07.46%20-%20A%20modern%20and%20sleek%20square%20app%20icon%20featuring%20a%20bold,%20stylized%20blue%20letter%20%27A%27%20in%20the%20center.%20The%20background%20is%20a%20gradient%20from%20dark%20blue%20to%20light%20blue.webp" alt="App Icon">
-            <div class="app-info">
-                <h1>Awesome App</h1>
-                <p>Developer Name | Rated 4.5 ★</p>
-                <a href="#" class="download-btn">Install</a>
-            </div>
+
+<header>
+  <div class="logo">
+    <div class="logoBox">
+      <i class="fas fa-th"></i>
+    </div>
+    AppNest
+  </div>
+  <div class="search">
+    <i class="fas fa-search"></i>
+    <input placeholder="Search apps, games and more...">
+  </div>
+  <div class="avatar">A</div>
+</header>
+
+<div class="container">
+  <aside>
+    <div class="navButton"><i class="fas fa-home"></i> Home</div>
+    <div class="navButton"><i class="fas fa-fire"></i> Trending</div>
+    <div class="navButton"><i class="fas fa-gamepad"></i> Games</div>
+    <div class="navButton"><i class="fas fa-mobile-alt"></i> Apps</div>
+    <div class="navButton"><i class="fas fa-download"></i> Installed</div>
+    <div class="navButton"><i class="fas fa-cog"></i> Settings</div>
+  </aside>
+
+  <main>
+    <!-- back to home -->
+    <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to store</a>
+
+    <!-- App detail card -->
+    <div class="detail-card">
+      <div class="detail-top">
+        <div class="detail-icon">
+          <i class="fas fa-rocket"></i>
         </div>
-        <div class="description">
-            <h2>About this app</h2>
-            <p>
-                Awesome App is the ultimate solution for [describe the purpose of the app]. 
-                With its user-friendly design and advanced features, it allows users to [mention key app features]. 
-            </p>
-            <ul>
-                <li>Feature 1: Description</li>
-                <li>Feature 2: Description</li>
-                <li>Feature 3: Description</li>
-            </ul>
+        <div class="detail-title">
+          <h1>Awesome App</h1>
+          <div class="developer">Bluyo Tech · <span style="color: var(--sub);">v3.2.1</span></div>
+          <div class="detail-rating">★★★★★ 4.9</div>
         </div>
-        <div class="screenshots">
-            <img src="https://via.placeholder.com/200x350" alt="Screenshot 1">
-            <img src="https://via.placeholder.com/200x350" alt="Screenshot 2">
-            <img src="https://via.placeholder.com/200x350" alt="Screenshot 3">
-            <img src="https://via.placeholder.com/200x350" alt="Screenshot 4">
-<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhnF8GNEE9tfg-4e9fyPodj5VDVvU08nfxgTPm0kOxe_pxxp2RMrWHmw44xafH2cFgMWlEPJcZlQKxo80thoC1-TLr6Sovzgt91ej1VBbpPCSEAzZs7E7OYXvA1LUW_Q1KDkLme-aasAx-_1Cz0n3xKN9HX_279jOsfu_q-kb-eFVBKlFkBNFz_C9v6qlM/s1024/DALL%C2%B7E%202024-11-23%2017.07.46%20-%20A%20modern%20and%20sleek%20square%20app%20icon%20featuring%20a%20bold,%20stylized%20blue%20letter%20%27A%27%20in%20the%20center.%20The%20background%20is%20a%20gradient%20from%20dark%20blue%20to%20light%20blue.webp" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"><img alt="" border="0" width="200" data-original-height="1024" data-original-width="1024" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhnF8GNEE9tfg-4e9fyPodj5VDVvU08nfxgTPm0kOxe_pxxp2RMrWHmw44xafH2cFgMWlEPJcZlQKxo80thoC1-TLr6Sovzgt91ej1VBbpPCSEAzZs7E7OYXvA1LUW_Q1KDkLme-aasAx-_1Cz0n3xKN9HX_279jOsfu_q-kb-eFVBKlFkBNFz_C9v6qlM/s200/DALL%C2%B7E%202024-11-23%2017.07.46%20-%20A%20modern%20and%20sleek%20square%20app%20icon%20featuring%20a%20bold,%20stylized%20blue%20letter%20%27A%27%20in%20the%20center.%20The%20background%20is%20a%20gradient%20from%20dark%20blue%20to%20light%20blue.webp"/></a></div>
+      </div>
+
+      <div class="detail-meta">
+        <span><i class="fas fa-download"></i> 1.2M+ downloads</span>
+        <span><i class="fas fa-shield-alt"></i> Rated for 3+</span>
+        <span><i class="fas fa-globe"></i> 45 languages</span>
+        <span><i class="fas fa-tag"></i> Productivity</span>
+      </div>
+
+      <div class="detail-description">
+        <strong>About this app</strong><br>
+        Awesome App brings lightning-fast creativity to your fingertips. 
+        Organize, edit, and share your projects with an intuitive interface 
+        designed for both beginners and pros. Enjoy real-time collaboration, 
+        cloud sync, and a library of stunning templates — all in one place.
+      </div>
+
+      <div class="install-row">
+        <button class="btn-install"><i class="fas fa-download"></i> Install</button>
+        <button class="btn-outline"><i class="far fa-heart"></i> Add to wishlist</button>
+        <button class="btn-outline"><i class="fas fa-share-alt"></i> Share</button>
+      </div>
+
+      <!-- screenshots (placeholder) -->
+      <div class="screenshots">
+        <div class="screenshot"><i class="fas fa-image"></i><br>Screen 1</div>
+        <div class="screenshot"><i class="fas fa-image"></i><br>Screen 2</div>
+        <div class="screenshot"><i class="fas fa-image"></i><br>Screen 3</div>
+        <div class="screenshot"><i class="fas fa-image"></i><br>Screen 4</div>
       </div>
     </div>
+  </main>
+</div>
+
+<!-- bottom nav (mobile) -->
+<div class="bottomNav">
+  <i class="fas fa-home" style="font-size: 22px; color: var(--accent);"></i>
+  <i class="fas fa-fire" style="font-size: 22px; color: var(--sub);"></i>
+  <i class="fas fa-gamepad" style="font-size: 22px; color: var(--sub);"></i>
+  <i class="fas fa-mobile-alt" style="font-size: 22px; color: var(--sub);"></i>
+  <i class="fas fa-download" style="font-size: 22px; color: var(--sub);"></i>
+</div>
+
 </body>
 </html>
