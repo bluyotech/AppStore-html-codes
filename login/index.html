@@ -1,180 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Sign Up</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f5f5f5;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Signup · AppNest</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
 
-        .form-container {
-            width: 100%;
-            max-width: 400px;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
+    :root {
+      --accent: #1a73e8;
+      --bg: #f5f7fb;
+      --surface: #fff;
+      --surface2: #f2f4f7;
+      --text: #111827;
+      --sub: #667085;
+      --border: #e7e7ea;
+      --radius: 24px;
+      --danger: #dc2626;
+      --success: #16a34a;
+    }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1115;
+        --surface: #171b22;
+        --surface2: #21262f;
+        --text: #fff;
+        --sub: #9ca3af;
+        --border: #2d3440;
+        --danger: #ef4444;
+        --success: #22c55e;
+      }
+    }
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-            color: #555;
-        }
+    .auth-container {
+      width: 100%;
+      max-width: 480px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      padding: 40px 36px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+      transition: .3s;
+    }
 
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
+    .auth-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .auth-header .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 28px;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .auth-header .logo .logoBox {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #49a2ff, #1a73e8);
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 22px;
+    }
+    .auth-header h2 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+    .auth-header p {
+      color: var(--sub);
+      font-size: 15px;
+      margin-top: 6px;
+    }
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #0078d7;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 10px;
-        }
+    .tabs {
+      display: flex;
+      background: var(--surface2);
+      border-radius: 999px;
+      padding: 4px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .tab {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      border: none;
+      background: transparent;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--sub);
+      cursor: pointer;
+      border-radius: 999px;
+      transition: .3s;
+      position: relative;
+    }
+    .tab.active {
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .tab:hover:not(.active) {
+      color: var(--text);
+    }
 
-        button:hover {
-            background-color: #005cbf;
-        }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .form-group .input-wrap {
+      position: relative;
+    }
+    .form-group .input-wrap i {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--sub);
+      font-size: 18px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px 14px 48px;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface2);
+      font-size: 15px;
+      color: var(--text);
+      transition: .2s;
+      outline: none;
+    }
+    .form-group input:focus {
+      border-color: var(--accent);
+      background: var(--surface);
+      box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.08);
+    }
+    .form-group input::placeholder {
+      color: var(--sub);
+    }
 
-        .toggle-link {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.9rem;
-        }
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 16px 0 24px;
+      font-size: 14px;
+    }
+    .form-options label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: var(--sub);
+    }
+    .form-options label input[type="checkbox"] {
+      accent-color: var(--accent);
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+    .form-options a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .form-options a:hover {
+      text-decoration: underline;
+    }
 
-        .toggle-link a {
-            color: #0078d7;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 17px;
+      cursor: pointer;
+      transition: .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-submit:hover {
+      transform: scale(1.01);
+      background: #0d47a1;
+    }
 
-        .toggle-link a:hover {
-            text-decoration: underline;
-        }
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 24px 0;
+      color: var(--sub);
+      font-size: 13px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
 
-        .hidden {
-            display: none;
-        }
+    .social-buttons {
+      display: flex;
+      gap: 12px;
+    }
+    .social-btn {
+      flex: 1;
+      padding: 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      background: transparent;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .social-btn:hover {
+      background: var(--surface2);
+      border-color: var(--accent);
+    }
+    .social-btn i {
+      font-size: 20px;
+    }
 
-        /* Animation */
-        .form {
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
+    .auth-footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--sub);
+    }
+    .auth-footer a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .auth-footer a:hover {
+      text-decoration: underline;
+    }
 
-        .form.active {
-            opacity: 1;
-        }
-    </style>
+    /* form toggle visibility */
+    .form-panel {
+      display: none;
+    }
+    .form-panel.active {
+      display: block;
+    }
+
+    .password-hint {
+      font-size: 12px;
+      color: var(--sub);
+      margin-top: 6px;
+    }
+
+    @media (max-width: 480px) {
+      .auth-container {
+        padding: 28px 20px;
+        border-radius: 24px;
+      }
+      .auth-header .logo {
+        font-size: 24px;
+      }
+      .auth-header h2 {
+        font-size: 22px;
+      }
+      .social-btn {
+        font-size: 13px;
+        padding: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="form-container">
-        <h2 id="form-title">Login</h2>
-        <!-- Login and Sign-Up Forms -->
-        <form id="login-form" class="form active">
-            <div class="form-group">
-                <label for="login-email">Email</label>
-                <input type="email" id="login-email" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-                <label for="login-password">Password</label>
-                <input type="password" id="login-password" placeholder="Enter your password" required>
-            </div>
-            <button type="submit">Login</button>
-        </form>
 
-        <form id="signup-form" class="form hidden">
-            <div class="form-group">
-                <label for="signup-name">Full Name</label>
-                <input type="text" id="signup-name" placeholder="Enter your full name" required>
-            </div>
-            <div class="form-group">
-                <label for="signup-email">Email</label>
-                <input type="email" id="signup-email" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-                <label for="signup-password">Password</label>
-                <input type="password" id="signup-password" placeholder="Create a password" required>
-            </div>
-            <div class="form-group">
-                <label for="signup-confirm-password">Confirm Password</label>
-                <input type="password" id="signup-confirm-password" placeholder="Confirm your password" required>
-            </div>
-            <button type="submit">Sign Up</button>
-        </form>
+<div class="auth-container">
+  <!-- Header -->
+  <div class="auth-header">
+    <a href="#" class="logo">
+      <span class="logoBox"><i class="fas fa-th"></i></span>
+      AppNest
+    </a>
+    <h2 id="formTitle">Welcome back</h2>
+    <p id="formSubtext">Sign in to access your apps and library</p>
+  </div>
 
-        <!-- Toggle Link -->
-        <div class="toggle-link">
-            <span id="toggle-text">Don't have an account?</span>
-            <a href="#" id="toggle-link">Sign Up</a>
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" data-tab="login" onclick="switchTab('login')">
+      <i class="fas fa-sign-in-alt" style="margin-right: 8px;"></i>Login
+    </button>
+    <button class="tab" data-tab="signup" onclick="switchTab('signup')">
+      <i class="fas fa-user-plus" style="margin-right: 8px;"></i>Sign Up
+    </button>
+  </div>
+
+  <!-- ========== LOGIN FORM ========== -->
+  <div id="loginPanel" class="form-panel active">
+    <form onsubmit="event.preventDefault(); alert('Login demo — redirect to dashboard');">
+      <div class="form-group">
+        <label>Email or username</label>
+        <div class="input-wrap">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="you@example.com" required>
         </div>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <div class="input-wrap">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="••••••••" required>
+        </div>
+      </div>
+      <div class="form-options">
+        <label>
+          <input type="checkbox" checked> Remember me
+        </label>
+        <a href="#">Forgot password?</a>
+      </div>
+      <button type="submit" class="btn-submit">
+        <i class="fas fa-arrow-right-to-bracket"></i> Sign In
+      </button>
+    </form>
+
+    <div class="divider">or continue with</div>
+    <div class="social-buttons">
+      <button class="social-btn"><i class="fab fa-google"></i> Google</button>
+      <button class="social-btn"><i class="fab fa-apple"></i> Apple</button>
     </div>
+    <div class="auth-footer">
+      Don't have an account? <a onclick="switchTab('signup')">Sign up</a>
+    </div>
+  </div>
 
-    <script>
-        const loginForm = document.getElementById('login-form');
-        const signupForm = document.getElementById('signup-form');
-        const toggleLink = document.getElementById('toggle-link');
-        const formTitle = document.getElementById('form-title');
-        const toggleText = document.getElementById('toggle-text');
+  <!-- ========== SIGNUP FORM ========== -->
+  <div id="signupPanel" class="form-panel">
+    <form onsubmit="event.preventDefault(); alert('Signup demo — welcome!');">
+      <div class="form-group">
+        <label>Full name</label>
+        <div class="input-wrap">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Alex Rivera" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <div class="input-wrap">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="alex@example.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <div class="input-wrap">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Create a strong password" required minlength="8">
+        </div>
+        <div class="password-hint">Must be at least 8 characters</div>
+      </div>
+      <div class="form-group">
+        <label>Confirm password</label>
+        <div class="input-wrap">
+          <i class="fas fa-check-circle"></i>
+          <input type="password" placeholder="Confirm your password" required>
+        </div>
+      </div>
+      <div class="form-options" style="margin-top: 8px;">
+        <label>
+          <input type="checkbox" required> I agree to the <a href="#" style="color: var(--accent); text-decoration: none;">Terms</a> &amp; <a href="#" style="color: var(--accent); text-decoration: none;">Privacy Policy</a>
+        </label>
+      </div>
+      <button type="submit" class="btn-submit">
+        <i class="fas fa-user-plus"></i> Create Account
+      </button>
+    </form>
 
-        toggleLink.addEventListener('click', (e) => {
-            e.preventDefault();
+    <div class="divider">or continue with</div>
+    <div class="social-buttons">
+      <button class="social-btn"><i class="fab fa-google"></i> Google</button>
+      <button class="social-btn"><i class="fab fa-apple"></i> Apple</button>
+    </div>
+    <div class="auth-footer">
+      Already have an account? <a onclick="switchTab('login')">Log in</a>
+    </div>
+  </div>
+</div>
 
-            if (loginForm.classList.contains('active')) {
-                // Fade out login form
-                loginForm.classList.remove('active');
-                setTimeout(() => {
-                    loginForm.classList.add('hidden');
-                    signupForm.classList.remove('hidden');
-                    signupForm.classList.add('active');
-                    formTitle.textContent = 'Sign Up';
-                    toggleText.textContent = 'Already have an account?';
-                    toggleLink.textContent = 'Login';
-                }, 500); // Match the transition duration
-            } else {
-                // Fade out sign-up form
-                signupForm.classList.remove('active');
-                setTimeout(() => {
-                    signupForm.classList.add('hidden');
-                    loginForm.classList.remove('hidden');
-                    loginForm.classList.add('active');
-                    formTitle.textContent = 'Login';
-                    toggleText.textContent = "Don't have an account?";
-                    toggleLink.textContent = 'Sign Up';
-                }, 500); // Match the transition duration
-            }
-        });
-    </script>
+<script>
+  // Tab switching logic
+  function switchTab(tab) {
+    // update tabs
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelector(`.tab[data-tab="${tab}"]`).classList.add('active');
+
+    // update panels
+    document.getElementById('loginPanel').classList.remove('active');
+    document.getElementById('signupPanel').classList.remove('active');
+    if (tab === 'login') {
+      document.getElementById('loginPanel').classList.add('active');
+      document.getElementById('formTitle').textContent = 'Welcome back';
+      document.getElementById('formSubtext').textContent = 'Sign in to access your apps and library';
+    } else {
+      document.getElementById('signupPanel').classList.add('active');
+      document.getElementById('formTitle').textContent = 'Create your account';
+      document.getElementById('formSubtext').textContent = 'Join AppNest and discover amazing apps';
+    }
+  }
+
+  // handle "Sign up" / "Log in" footer links
+  document.querySelectorAll('.auth-footer a[onclick]').forEach(el => {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      const tab = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+      switchTab(tab);
+    });
+  });
+
+  // also handle clicks on tabs from data-tab
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      const tabName = this.getAttribute('data-tab');
+      switchTab(tabName);
+    });
+  });
+</script>
+
 </body>
 </html>
